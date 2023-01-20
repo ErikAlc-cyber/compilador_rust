@@ -1,0 +1,9 @@
+alpha = { 'a'..'z' | 'A'..'Z' }
+digit = { '0'..'9' }
+underscore = { "_" }
+newline = _{ "\n" | "\r" }
+WHITESPACE = _{ " " }
+
+declaration = { "var" ~ !newline ~ idents ~ newline? ~ ";" }
+idents = { ident ~ (newline? ~ "," ~ ident)* }
+ident = @{ !digit ~ (alpha | digit | underscore)+ }
